@@ -1,0 +1,2 @@
+# lzsd
+Natsume LZS decompressor
