@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Gundam Battle Assault 2 (PS1) LZS decompressor
+
 uint16_t get_u16_le(uint8_t *mem)
 {
   return (mem[1] << 8) | mem[0];
@@ -21,7 +23,7 @@ void decompress(uint8_t *src, uint8_t **aOutData, long *aOutSize)
            num_size_bits, num_flags_bits,
            num_flags_bytes;
 
-  uint32_t flags, offset_mask;
+  uint32_t flags, size_mask;
 
   int32_t todo;
 
@@ -36,7 +38,7 @@ void decompress(uint8_t *src, uint8_t **aOutData, long *aOutSize)
   num_flags_bits = get_u16_le(src+0x28);
   num_flags_bytes = num_flags_bits / 8;
   num_size_bits = get_u16_le(src+0x2A);
-  offset_mask = 0xFFFF >> (16 - num_size_bits);
+  size_mask = 0xFFFF >> (16 - num_size_bits);
   src += 0x20 + get_u16_le(src+0x22);
 
   while (todo) {
@@ -50,7 +52,7 @@ void decompress(uint8_t *src, uint8_t **aOutData, long *aOutSize)
         todo = todo - 1;
       } else { /* dictionary data (compressed) */
         word = (src[0] << 8) | src[1];
-        size = (word & offset_mask) + 3;
+        size = (word & size_mask) + 3;
         src  = src + 2;
         todo = todo - size;
         dict = dst - (word >> num_size_bits);
@@ -73,6 +75,7 @@ int main(int argc, char *argv[])
   //////////////////////////////////////////////////////////////////
 
   if (argc != 2 && argc != 3) {
+    printf("Gundam Battle Assault 2 LZS decompressor\n");
     printf("Usage: %s <infile> [outfile]\n", argv[0]);
     return 1;
   }
