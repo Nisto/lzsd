@@ -1,5 +1,9 @@
 # lzsd
-Natsume LZS decompressor
+LZS decompressors for various games developed by Natsume:
+* Gundam Battle Assault 2 (PS1)
+* Gear Fighter Dendoh (PS1)
+* Gintama - Yorozuya Chuubu - Tsukkomable Douga (Wii)
+* Omega Five (XBLA)
 
 ## Support ❤️
 
