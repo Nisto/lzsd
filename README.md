@@ -1,8 +1,12 @@
 # lzsd
-LZS decompressors for various games developed by Natsume:
+LZS decompressors for various games developed by Natsume.
+
+## Known supported games
 * Gundam Battle Assault 2 (PS1)
 * Gear Fighter Dendoh (PS1)
 * Gintama - Yorozuya Chuubu - Tsukkomable Douga (Wii)
+* Kaizoku Sentai Gokaiger: Atsumete Henshin! 35 Sentai! (DS)
+* Kamen Rider Battle: Ganbaride Card Battle Taisen (DS)
 * Omega Five (XBLA)
 
 ## Support ❤️
